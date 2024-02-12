@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.iesfranciscodelosrios.canvas_rafalucena_alejandrogutierrez_alejandrogalvez"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.iesfranciscodelosrios.canvas_rafalucena_alejandrogutierrez_alejandrogalvez"

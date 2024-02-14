@@ -8,11 +8,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.view.View;
-
-
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     private Star star;
+    private StarView starView;
     private LinearLayout linearLayoutButtons;
     private LinearLayout linearLayoutEditText;
     private EditText editTextNumPuntas;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         miCanvas = findViewById(R.id.miCanvas);
@@ -34,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         star = new Star(1000, 1000, 10, 100);
         linearLayoutButtons = findViewById(R.id.linear_layout_buttons);
-        linearLayoutEditText = findViewById(R.id.linear_layout_edittext);
         editTextNumPuntas = findViewById(R.id.editTextNumPuntas);
         editTextRadio = findViewById(R.id.editTextRadio);
 
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 int radio = Integer.parseInt(editTextRadio.getText().toString());
                 star.setNumPuntas(numPuntas);
                 star.setRadius(radio);
-                StarView starView = new StarView(MainActivity.this);
+                starView = new StarView(MainActivity.this);
                 LinearLayout llCanvas = findViewById(R.id.llCanvas);
                 llCanvas.removeAllViews();
                 llCanvas.addView(starView);
@@ -63,8 +66,16 @@ public class MainActivity extends AppCompatActivity {
                 clearCanvas();
             }
         });
-    }
 
+
+        Button buttonChangeColor = findViewById(R.id.botonCambiarColor);
+        buttonChangeColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starView.changeColor();
+            }
+        });
+    }
 
     private void clearCanvas() {
         LinearLayout llCanvas = findViewById(R.id.llCanvas);
@@ -72,13 +83,17 @@ public class MainActivity extends AppCompatActivity {
         llCanvas.setBackgroundColor(Color.WHITE);
     }
 
+
+
     class StarView extends View {
         private Paint paint;
+        private int colorIndex = 0;
+        private int[] colors = {Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW};
 
         public StarView(MainActivity context) {
             super(context);
             paint = new Paint();
-            paint.setColor(Color.RED);
+            paint.setColor(colors[colorIndex]);
             paint.setStyle(Paint.Style.STROKE);
         }
 
@@ -89,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void drawStar(Canvas canvas, Paint paint) {
-            float centerX = star.getCenterX()/2;
-            float centerY = star.getCenterY()/2;
+            float centerX = getWidth() / 2;
+            float centerY = getHeight() / 2;
             int numPoints = star.getNumPuntas() * 2;
             float radius = star.getRadius();
 
@@ -111,6 +126,13 @@ public class MainActivity extends AppCompatActivity {
             path.close();
             canvas.drawPath(path, paint);
         }
-    }
 
+
+        public void changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            paint.setColor(colors[colorIndex]);
+            invalidate();
+        }
+    }
 }
+

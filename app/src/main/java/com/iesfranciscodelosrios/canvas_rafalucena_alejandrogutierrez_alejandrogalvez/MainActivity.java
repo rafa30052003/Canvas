@@ -33,16 +33,12 @@ public class MainActivity extends AppCompatActivity {
                 miCanvas.cambiarColorLapiz();
             }
         });
-    }
 
-}
         star = new Star(1000, 1000, 10, 100);
         linearLayoutButtons = findViewById(R.id.linear_layout_buttons);
         linearLayoutEditText = findViewById(R.id.linear_layout_edittext);
         editTextNumPuntas = findViewById(R.id.editTextNumPuntas);
         editTextRadio = findViewById(R.id.editTextRadio);
-
-
 
 
         Button buttonDrawStar = findViewById(R.id.buttonDrawStar);
@@ -60,11 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         Button buttonClearCanvas = findViewById(R.id.buttonClearCanvas);
         buttonClearCanvas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
         llCanvas.removeAllViews();
         llCanvas.setBackgroundColor(Color.WHITE);
     }
-
-
 
     class StarView extends View {
         private Paint paint;
@@ -123,5 +112,5 @@ public class MainActivity extends AppCompatActivity {
             canvas.drawPath(path, paint);
         }
     }
-}
 
+}

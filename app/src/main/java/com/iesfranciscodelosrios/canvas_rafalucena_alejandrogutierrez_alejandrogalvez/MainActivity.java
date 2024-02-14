@@ -8,10 +8,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+
+
 
 public class MainActivity extends AppCompatActivity {
     private Star star;
@@ -25,6 +23,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        miCanvas = findViewById(R.id.miCanvas);
+
+        findViewById(R.id.botonCambiarColor).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Al hacer clic en el botón, se llama al método cambiarColorLapiz en ColorClass
+                miCanvas.cambiarColorLapiz();
+            }
+        });
+    }
+
+}
         star = new Star(1000, 1000, 10, 100);
         linearLayoutButtons = findViewById(R.id.linear_layout_buttons);
         linearLayoutEditText = findViewById(R.id.linear_layout_edittext);
@@ -113,3 +124,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+

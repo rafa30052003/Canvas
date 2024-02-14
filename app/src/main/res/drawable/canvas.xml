@@ -8,16 +8,16 @@
     >
     <group>
         <clip-path
-            android:pathData="M0 0H352V450H0V0Z"
+            android:pathData="M0 5Q0 0 5 0H347Q352 0 352 5V445Q352 450 347 450H5Q0 450 0 445V5Z"
             />
         <path
-            android:pathData="M0 0V450H352V0"
+            android:pathData="M0 5Q0 0 5 0H347Q352 0 352 5V445Q352 450 347 450H5Q0 450 0 445V5Z"
             android:fillColor="#FFF"
             />
         <path
-            android:pathData="M0 0H352V450H0V0Z"
-            android:strokeWidth="2"
-            android:strokeColor="#000000"
+            android:pathData="M0 5Q0 0 5 0H347Q352 0 352 5V445Q352 450 347 450H5Q0 450 0 445V5Z"
+            android:strokeWidth="3"
+            android:strokeColor="#4c6707"
             />
     </group>
 </vector>

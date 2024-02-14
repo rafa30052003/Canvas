@@ -31,14 +31,13 @@ public class ColorClass extends View {
     }
 
     private void init() {
-        // Configurar el Paint
+
         paint = new Paint();
         actualizarColorLapiz();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(5);
     }
 
-    // Resto de tus métodos...
 
     public void cambiarColorLapiz() {
         indiceColorActual = (indiceColorActual + 1) % coloresLapiz.length;
@@ -50,10 +49,4 @@ public class ColorClass extends View {
         paint.setColor(coloresLapiz[indiceColorActual]);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        // Ejemplo: Dibuja un círculo
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 50, paint);
-    }
 }
